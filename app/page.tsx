@@ -1,113 +1,151 @@
+"use client"
+import React, { useEffect } from "react";
 import Image from "next/image";
+import Link from 'next/link'
+import { useAnimation, motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { Button } from "@nextui-org/react";
+
+import BackImg from "@/public/images/back.jpg";
+import MeImg from "@/public/images/me.jpg";
+import Projects from "@/components/projects";
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    const titleSpan = "LORENZO CERATO", title = "È UNO SVILUPPATORE E DESIGNER ITALIANO CON SEDE A VENEZIA.";
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+    const ctrls = useAnimation();
+  
+    const { ref, inView } = useInView({
+        threshold: 0.5,
+        triggerOnce: true,
+    });
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+    useEffect(() => {
+        if (inView) {
+            ctrls.start("visible");
+        }
+        if (!inView) {
+            ctrls.start("hidden");
+        }
+    }, [ctrls, inView]);
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+    const wordAnimation = {
+        hidden: {},
+        visible: {},
+    };
+      
+    const characterAnimation = {
+        hidden: {
+            opacity: 0,
+        },
+        visible: {
+            opacity: 1,
+            transition: {
+                duration: 1,
+                ease: [0.2, 0.65, 0.3, 0.9],
+            },
+        },
+    };
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+    const textAnimation = {
+        hidden: {
+            opacity: 0,
+            y: 10,
+        },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 1,
+                ease: [0.2, 0.65, 0.3, 0.9],
+            },
+        },
+    }
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+    const btnAnimation = {
+        hidden: {
+            opacity: 0,
+            y: 30,
+        },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 1,
+                ease: [0.2, 0.65, 0.3, 0.9],
+            },
+        },
+    }
+
+    const imgAnimation = {
+        hidden: {
+            opacity: 0,
+        },
+        visible: {
+            opacity: 1,
+            transition: {
+                duration: 1,
+                ease: [0.2, 0.65, 0.3, 0.9],
+            },
+        },
+    }
+
+    return (
+        <main className="mb-[100px] max-w-[1000px] align-center mx-auto scroll-mt-[500px]">
+            <div className="flex flex-col md:flex-row w-full">
+                <div className="px-6 mt-10 md:mt-20 md:w-3/5 md:pr-12">
+                    <h1 className="mb-5 text-[1.4rem] leading-[2.4rem] md:pt-5 md:border-t md:border-black/[0.14]">
+                        <span className="opacity-50 font-semibold" aria-label={titleSpan} role="heading">
+                            {titleSpan.split(" ").map((word, index) => (
+                                <motion.span ref={ref} aria-hidden="true" key={index} initial="hidden" animate={ctrls} variants={wordAnimation} transition={{delayChildren: index * 0.25, staggerChildren: 0.05,}}>
+                                    {word.split("").map((character, index) => (
+                                        <motion.span aria-hidden="true" key={index} variants={characterAnimation}>{character}</motion.span>
+                                    ))}
+                                    &nbsp;
+                                </motion.span>
+                            ))}
+                        </span>
+                        <p className="font-medium" aria-label={title} role="heading">
+                            {title.split("").map((character, index) => (
+                                <motion.span aria-hidden="true" key={index} initial="hidden" animate={ctrls} variants={characterAnimation}>{character}</motion.span>
+                            ))}
+                        </p>
+                    </h1>
+                    <motion.p animate={ctrls} variants={textAnimation} aria-hidden="true" initial="hidden" className="my-5">Combino le tecnologie più avanzate con la mia esperienza nel design per dar vita a progetti unici e <span className="opacity-50 font-medium">garantirti un sito web eccellente.</span></motion.p>
+                    <motion.div animate={ctrls} variants={btnAnimation} aria-hidden="true" initial="hidden">
+                        <Button className="mt-5 px-5 bg-black text-white rounded-full shadow-xl">
+                            <Link href="/contact">CONTATTAMI</Link>
+                        </Button>
+                    </motion.div>
+                </div>
+                <motion.div ref={ref} animate={ctrls} variants={imgAnimation} aria-hidden="true" initial="hidden" className="md:w-2/5">
+                    <Image className="w-full object-cover my-12 md:h-[600px] md:rounded-2xl" src={BackImg} alt='image' placeholder='blur' draggable='false'></Image>
+                </motion.div>
+            </div>
+            <hr className="hidden md:block border-top border-black/[0.14]"/>
+            <div className="flex flex-col md:flex-row md:mt-12">
+                <div className="px-6 scroll-mt-28 md:w-1/2 md:border-r md:border-black/[0.14] md:pt-4" id="projects">
+                    <h2 className="font-semibold opacity-50">PROGETTI</h2>
+                    <Projects/>
+                    <hr className="border-top border-black/[0.14]"/>
+                    <hr className="border-top border-black/[0.14] mt-2"/>
+                </div>
+                <div className="px-6 mt-12 scroll-mt-28 md:w-1/2 md:mt-4" id="skills">
+                    <h2 className="font-semibold opacity-50">SKILLS</h2>
+                    <div className="flex flex-row mt-4 mb-6">
+                        <Image className="w-[30%] mr-4 rounded-xl object-cover" src={MeImg} alt='image' placeholder='blur' draggable='false'></Image>
+                        <div>
+                            <p className="mb-4">Le mie competenze spaziano dalla progettazione dei <span className="opacity-50 font-semibold">siti web</span> al <span className="opacity-50 font-semibold">graphic design.</span></p>
+                            <p>Che tu abbia bisogno di un sito di e-commerce o un sito statico per la tua azienda, <span className="opacity-50 font-semibold">sono la persona che fa per te.</span></p>
+                        </div>
+                    </div>
+                    <hr/>
+                    <p className="mt-4">Mi tengo in costante aggiornamento per essere al passo con le <span className="opacity-50 font-semibold">tecnologie</span> più recenti, e ciò che mi distingue è la <span className="opacity-50 font-semibold">passione</span> che metto in tutti i miei lavori.</p>
+                    <Button className="mt-8 px-5 bg-black text-white rounded-full shadow-xl">
+                        <Link href="/contact">CONTATTAMI</Link>
+                    </Button>
+                </div>
+            </div>
+        </main>
+    );
 }
