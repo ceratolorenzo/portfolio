@@ -95,7 +95,7 @@ export default function Project({ project }: ProjectProps) {
             <motion.h1 className='text-3xl font-medium' aria-hidden="true" initial="hidden" animate={ctrls} variants={titleAnimation}>{project.title}</motion.h1>
             <motion.div className="mt-5 mb-8 shadow-2xl rounded-2xl" aria-hidden="true" initial="hidden" animate={ctrls} variants={videoAnimation}>
                 { project.isVideo ? (
-                    <video src={project.media} className="h-full w-full object-cover rounded-2xl" autoPlay loop muted draggable="false"></video>
+                    <video src={project.media} className="h-full w-full object-cover rounded-2xl" autoPlay playsInline loop muted draggable="false"></video>
                 ) : (
                     <Image className="h-full w-full object-cover rounded-2xl" src={project.media} alt="image" placeholder="blur" draggable="false" />
                 )}

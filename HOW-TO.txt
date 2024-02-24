@@ -1,0 +1,9 @@
+TO COMMIT CHANGES
+after making new changes, open the terminal and write:
+git add .
+git push
+
+TO ADD A PROJECT
+create a new folder in the app directory with the correct project name
+copy the page.tsx of another already-made project
+add the necessary data to the "projects" array inside of the "data.ts" file

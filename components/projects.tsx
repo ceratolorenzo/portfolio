@@ -18,7 +18,7 @@ export default function Projects() {
         >
           <div className="mb-5 relative">
             {project.isVideo ? (
-              <video src={project.media} className="h-full w-full object-cover rounded-2xl" autoPlay loop muted draggable="false"></video>
+              <video src={project.media} className="h-full w-full object-cover rounded-2xl" autoPlay playsInline loop muted draggable="false"></video>
             ) : (
               <Image className="h-full w-full object-cover rounded-2xl" src={project.media} alt="image" placeholder="blur" draggable="false" />
             )}
