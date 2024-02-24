@@ -15,19 +15,14 @@ export default function Home() {
 
     const ctrls = useAnimation();
   
-    const { ref, inView } = useInView({
+    const { ref } = useInView({
         threshold: 0.5,
         triggerOnce: true,
     });
 
     useEffect(() => {
-        if (inView) {
-            ctrls.start("visible");
-        }
-        if (!inView) {
-            ctrls.start("hidden");
-        }
-    }, [ctrls, inView]);
+        ctrls.start("visible");
+    }, []);    
 
     const wordAnimation = {
         hidden: {},
