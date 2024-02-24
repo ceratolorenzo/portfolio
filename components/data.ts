@@ -1,5 +1,5 @@
 import Thb1 from "@/public/images/ycf-thb.jpeg";
-import Thb2 from "@/public/images/berlin.jpg";
+import Thb2 from "@/public/images/berlin.png";
 import Thb3 from "@/public/images/logo.png";
 
 import Ycf1 from '@/public/images/ycf-works.png';
@@ -9,7 +9,7 @@ import Ycf3 from '@/public/images/ycf3.jpeg';
 import Logo1 from '@/public/images/sketches.png';
 import Logo2 from '@/public/images/Flags Mockup.png';
 
-import Project2 from "@/public/images/berlin.jpg";
+import Project2 from "@/public/images/berlin.png";
 import Project3 from "@/public/images/logo.png";
 
 export const projects = [

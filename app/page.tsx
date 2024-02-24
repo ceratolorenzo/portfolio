@@ -6,8 +6,8 @@ import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Button } from "@nextui-org/react";
 
-import BackImg from "@/public/images/back.jpg";
-import MeImg from "@/public/images/me.jpg";
+import BackImg from "@/public/images/back.png";
+import MeImg from "@/public/images/me.png";
 import Projects from "@/components/projects";
 
 export default function Home() {

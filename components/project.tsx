@@ -5,7 +5,7 @@ import { useInView } from "react-intersection-observer";
 import Image from 'next/image';
 import Link from 'next/link';
 import {Button} from '@nextui-org/react';
-import BackImg from "@/public/images/back.jpg";
+import BackImg from "@/public/images/back.png";
 import ReDeck from "@/public/images/redeck.png";
 
 interface ProjectProps {
