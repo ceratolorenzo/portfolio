@@ -133,7 +133,7 @@ export default function Project({ project }: ProjectProps) {
                         image.includes('open:') ? (
                             <video src={image.slice(5)} className="h-full w-full object-cover rounded-2xl shadow-xl" controls draggable="false"></video>
                         ) : (
-                            <video src={image} className="h-full w-full object-cover rounded-2xl shadow-xl" autoPlay loop muted draggable="false"></video>
+                            <video src={image} className="h-full w-full object-cover rounded-2xl shadow-xl" autoPlay playsInline loop muted draggable="false"></video>
                         )
                     ) : (
                         <Image className="h-full w-full object-cover rounded-2xl shadow-xl" src={image} alt="image" placeholder="blur" draggable="false" key={index}/>
