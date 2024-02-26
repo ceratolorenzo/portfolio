@@ -20,7 +20,7 @@ export default function Index() {
   ];
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen} className="h-[100px]">
+    <Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} className="h-[100px]">
       <NavbarContent>
         <NavbarBrand>
         <svg className="w-[40px]" width="100" height="86" viewBox="0 0 100 86" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,16 +43,19 @@ export default function Index() {
             </NavbarItem>
         ))}
       </NavbarContent>
-      <p className="text-xs font-semibold sm:opacity-0">MENU</p>
+      <p className="text-xs font-semibold sm:hidden">MENU</p>
       <NavbarMenu className="pt-[50px]">
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link
-              className="w-full text-current"
-              href={menuLinks[index]}
-              size="lg"
-            >
-              {item}
+                className="w-full text-current"
+                href={menuLinks[index]}
+                size="lg"
+                onClick={() => {
+                    setIsMenuOpen(false);
+                }}
+              >
+                {item}
             </Link>
           </NavbarMenuItem>
         ))}

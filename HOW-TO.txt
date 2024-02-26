@@ -1,7 +1,7 @@
 TO COMMIT CHANGES
 after making new changes, open the terminal and write:
 git add .
-git commit -m main
+git commit -m "(what you modified)"
 git push
 
 TO ADD A PROJECT
